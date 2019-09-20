@@ -1,0 +1,26 @@
+---
+
+- name: Create directory for swarm service project files
+  file:
+    path: "{{ dockeradmin_home }}/{{ project_name }}"
+    state: "directory"
+    owner: "dockeradmin"
+    group: "dockeradmin"
+    mode: "0755"
+
+- name: Put in place docker-compose env file
+  copy:
+    content: "{{ docker_env_file_content }}"
+    dest: "{{ dockeradmin_home }}/{{ project_name }}/.docker-compose_{{ project_name }}.env"
+    owner: "dockeradmin"
+    group: "dockeradmin"
+    mode: "0640"
+  when: use_docker_env_file == "yes"
+
+- name: Put in place docker-compose file
+  copy:
+    content: "{{ docker_compose_file_content }}"
+    dest: "{{ dockeradmin_home }}/{{ project_name }}/docker-compose.yml"
+    owner: "dockeradmin"
+    group: "dockeradmin"
+    mode: "0640"

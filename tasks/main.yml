@@ -1,3 +1,5 @@
 ---
-- debug:
-    msg: "This test passed"
+
+- import_tasks: deploy_setup.yml
+
+- import_tasks: stack_deploy.yml

@@ -1,0 +1,11 @@
+---
+
+- name: Deploy project stack into swarm cluster
+  become_user: "dockeradmin"
+  docker_stack:
+    state: present
+    name: "{{ project_name }}"
+    compose:
+      - docker-compose.yml
+  args:
+    chdir: "{{ dockeradmin_home }}/{{ project_name }}"

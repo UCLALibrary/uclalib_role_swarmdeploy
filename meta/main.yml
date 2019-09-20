@@ -3,8 +3,8 @@
 dependencies: []
 
 galaxy_info:
-  author: your name
-  description:
+  author: Stephen Gurnick
+  description: Deploy Docker Container into a Docker Swarm cluster
   company: UCLA Library
   license: reference LICENSE file
   min_ansible_version: 2.4

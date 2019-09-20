@@ -1,2 +1,45 @@
 ---
-# defaults file for common
+
+# Name of this project/service to be deployed
+project_name: ""
+
+# Path to docker admin user home directory
+dockeradmin_home: "/home/dockeradmin"
+
+# Does the container require an external env vars file?
+use_docker_env_file: "no"
+
+# Includes what you'd put into the docker-compose.yml file for this project/service
+docker_compose_file_content: |
+  version: '3'
+  services:
+    SERVICE_NAME:
+      image: IMAGE_NAME
+      env_file:
+        - ENV_FILENAME
+      ports:
+        - "HOST_PORT:CONTAINER_PORT"
+      deploy:
+        endpoint_mode: vip
+        mode: replicated
+        replicas: NUM_OF_REPLICAS
+        resources:
+          limits:
+            cpus: 'CPU_MAX'
+            memory: MEMORY_MAX
+          reservations:
+            cpus: 'CPU_MIN'
+            memory: MEMORY_MIN
+        restart_policy:
+          condition: RESTART_CONDITION
+          delay: DELAY_SECS
+          max_attempts: NUM_RESTART_ATTEMPTS
+          window: RESTART_WINDOW
+
+# Contents include key=value pairs specific to the project/service being deployed
+docker_env_file_content: |
+  KEY1=VALUE1
+  KEY2=VALUE2
+  KEY3=VALUE3
+  KEY4=VALUE4
+  KEY5=VALUE4
