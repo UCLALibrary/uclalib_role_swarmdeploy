@@ -6,6 +6,4 @@
     state: present
     name: "{{ project_name }}"
     compose:
-      - docker-compose.yml
-  args:
-    chdir: "{{ dockeradmin_home }}/{{ project_name }}"
+      - "{{ dockeradmin_home }}/{{ project_name }}/docker-compose.yml"
